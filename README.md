@@ -125,4 +125,5 @@ $ make clean
 | <a name="output_virtual_machine_name"></a> [virtual\_machine\_name](#output\_virtual\_machine\_name) | Linux VM name |
 | <a name="output_vnet_id"></a> [vnet\_id](#output\_vnet\_id) | vNet ID |
 | <a name="output_vnet_name"></a> [vnet\_name](#output\_vnet\_name) | vNet Name |
+
 <!-- END OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
