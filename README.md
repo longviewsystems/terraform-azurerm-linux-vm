@@ -47,7 +47,7 @@ $ make clean
 
 | Name | Version |
 |------|---------|
-| <a name="requirement_terraform"></a> [terraform](#requirement\_terraform) | >= 0.14 |
+| <a name="requirement_terraform"></a> [terraform](#requirement\_terraform) | >= 1.0.8 |
 | <a name="requirement_azurerm"></a> [azurerm](#requirement\_azurerm) | = 2.88.1 |
 
 ## Providers
@@ -117,5 +117,14 @@ $ make clean
 
 ## Outputs
 
-No outputs.
+| Name | Description |
+|------|-------------|
+| <a name="output_rg_id"></a> [rg\_id](#output\_rg\_id) | Resource Group ID |
+| <a name="output_rg_name"></a> [rg\_name](#output\_rg\_name) | Resource Group Name |
+| <a name="output_subnet_id"></a> [subnet\_id](#output\_subnet\_id) | Subnet ID |
+| <a name="output_subnet_name"></a> [subnet\_name](#output\_subnet\_name) | Subnet name |
+| <a name="output_virtual_machine_id"></a> [virtual\_machine\_id](#output\_virtual\_machine\_id) | Linux VM ID |
+| <a name="output_virtual_machine_name"></a> [virtual\_machine\_name](#output\_virtual\_machine\_name) | Linux VM name |
+| <a name="output_vnet_id"></a> [vnet\_id](#output\_vnet\_id) | vNet ID |
+| <a name="output_vnet_name"></a> [vnet\_name](#output\_vnet\_name) | vNet Name |
 <!-- END OF PRE-COMMIT-TERRAFORM DOCS HOOK -->

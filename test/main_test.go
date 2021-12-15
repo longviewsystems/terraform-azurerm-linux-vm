@@ -12,7 +12,7 @@ func TestTerraformlinuxVM(t *testing.T) {
 		TerraformDir: "../",
 
 		// Variables to pass to our Terraform code using -var-file options
-		VarFiles: []string{"linux-vm.tfvars"},
+		VarFiles: []string{"examples/linux-vm.tfvars"},
 		
 	}
 
