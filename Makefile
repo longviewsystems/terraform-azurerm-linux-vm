@@ -5,10 +5,10 @@ SHELL := /bin/bash
 apply:
 	echo "Calling  apply for linuxvm"
 	terraform init
-	terraform plan -var-file="linux-vm.tfvars"  
-	terraform apply -var-file="linux-vm.tfvars"  -auto-approve
+	terraform plan -var-file="examples/linux-vm.tfvars"  
+	terraform apply -var-file="examples/linux-vm.tfvars"  -auto-approve
 destroy:
-	terraform destroy -var-file="linux-vm.tfvars"  -auto-approve
+	terraform destroy -var-file="examples/linux-vm.tfvars"  -auto-approve
 clean:
 	@find . -name terraform.tfstate -type f -exec rm -rf {} +
 	@find . -name terraform.tfstate.backup -type f -exec rm -rf {} +

@@ -47,7 +47,7 @@ $ make clean
 
 | Name | Version |
 |------|---------|
-| <a name="requirement_terraform"></a> [terraform](#requirement\_terraform) | >= 0.14 |
+| <a name="requirement_terraform"></a> [terraform](#requirement\_terraform) | >= 1.0.8 |
 | <a name="requirement_azurerm"></a> [azurerm](#requirement\_azurerm) | = 2.88.1 |
 
 ## Providers
@@ -107,15 +107,22 @@ $ make clean
 | <a name="input_resource_group_name"></a> [resource\_group\_name](#input\_resource\_group\_name) | The Resource Group for the virtual machine. | `string` | n/a | yes |
 | <a name="input_store_admin_password_in_KV"></a> [store\_admin\_password\_in\_KV](#input\_store\_admin\_password\_in\_KV) | True value stores the password in a Key Vault for safe keeping.  If the admin\_password is blank, then a random password will be generated and may need to be stored for use. | `bool` | `false` | no |
 | <a name="input_subnet_id"></a> [subnet\_id](#input\_subnet\_id) | Subnet ID of the subnet to join the VM to. | `string` | n/a | yes |
-| <a name="input_subscription_id"></a> [subscription\_id](#input\_subscription\_id) | The Subscription ID of the target Resource deployment. | `string` | n/a | yes |
 | <a name="input_tags"></a> [tags](#input\_tags) | A mapping of tags to assign to the Virtual Machine. | `map(any)` | `{}` | no |
 | <a name="input_tags_customer_sub"></a> [tags\_customer\_sub](#input\_tags\_customer\_sub) | These tags can be set in SubID.auto.tfvars.json.  They will apply to all Azure Resources built in a subscription matching the subID. | `map(any)` | `{}` | no |
-| <a name="input_tenant_id"></a> [tenant\_id](#input\_tenant\_id) | The Tenant ID of the target Resource deployment. | `string` | n/a | yes |
 | <a name="input_use_dynamic_plan"></a> [use\_dynamic\_plan](#input\_use\_dynamic\_plan) | If true, the image details (publisher, offer, etc.) will be used in by a plan block which describes a Marketplace Image. | `bool` | `false` | no |
 | <a name="input_vm_name"></a> [vm\_name](#input\_vm\_name) | The name of the virtual machine to be created. | `string` | n/a | yes |
 | <a name="input_vm_size"></a> [vm\_size](#input\_vm\_size) | The Azure VM size to be used. | `string` | n/a | yes |
 
 ## Outputs
 
-No outputs.
+| Name | Description |
+|------|-------------|
+| <a name="output_rg_id"></a> [rg\_id](#output\_rg\_id) | Resource Group ID |
+| <a name="output_rg_name"></a> [rg\_name](#output\_rg\_name) | Resource Group Name |
+| <a name="output_subnet_id"></a> [subnet\_id](#output\_subnet\_id) | Subnet ID |
+| <a name="output_subnet_name"></a> [subnet\_name](#output\_subnet\_name) | Subnet name |
+| <a name="output_virtual_machine_id"></a> [virtual\_machine\_id](#output\_virtual\_machine\_id) | Linux VM ID |
+| <a name="output_virtual_machine_name"></a> [virtual\_machine\_name](#output\_virtual\_machine\_name) | Linux VM name |
+| <a name="output_vnet_id"></a> [vnet\_id](#output\_vnet\_id) | vNet ID |
+| <a name="output_vnet_name"></a> [vnet\_name](#output\_vnet\_name) | vNet Name |
 <!-- END OF PRE-COMMIT-TERRAFORM DOCS HOOK -->

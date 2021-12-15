@@ -1,14 +1,3 @@
-variable "tenant_id" {
-  type        = string
-  description = "The Tenant ID of the target Resource deployment."
-  #sample     = "5806bd64-fde5-449f-9a07-############"
-}
-
-variable "subscription_id" {
-  type        = string
-  description = "The Subscription ID of the target Resource deployment."
-  #sample     = "57215661-2f9e-482f-9334-############"
-}
 
 /*********************************************************
 *** VM Details
