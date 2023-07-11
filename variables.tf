@@ -237,7 +237,7 @@ variable "tags" {
   default     = {}
 }
 
-variable "client_secret" {
+variable "client_id" {
   type        = string
   description = "The client secret for the Service Principal used to build the VM."
   default     = ""
