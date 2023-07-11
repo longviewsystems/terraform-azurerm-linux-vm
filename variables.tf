@@ -239,6 +239,12 @@ variable "tags" {
 
 variable "client_id" {
   type        = string
+  description = "The client id for the Service Principal used to build the VM."
+  default     = ""
+}
+
+variable "client_secret" {
+  type        = string
   description = "The client secret for the Service Principal used to build the VM."
   default     = ""
 }
