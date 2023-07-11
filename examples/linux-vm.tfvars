@@ -1,5 +1,5 @@
 
-subnet_id                  = "/subscriptions/TBD-SubscriptionId/resourceGroups/RG-TF-Test-WinVMModule/providers/Microsoft.Network/virtualNetworks/vnet-Tf-Test-WInVMModule/subnets/default"
+subnet_id                  = "/subscriptions/fc110a0a-de61-4971-819c-01761fb463ad/resourceGroups/RG-TF-Test-WinVMModule/providers/Microsoft.Network/virtualNetworks/vnet-Tf-Test-WInVMModule/subnets/default"
 admin_password             = ""
 backup_vault_enabled       = false
 use_dynamic_plan           = false
@@ -10,11 +10,11 @@ Encrpyt_all_VM_Disks       = false
 vm_size                    = "Standard_D8s_v4"
 SRId                       = "11551"
 resource_group_name        = "RG-TF-Test-WinVMModule"
-tenant_id                  = "TBD-TenantId"
-subscription_id            = "TBD-SubscriptionId"
+tenant_id                  = "894f1d30-2feb-4e8b-9bf4-20395915d13f"
+subscription_id            = "fc110a0a-de61-4971-819c-01761fb463ad"
 store_admin_password_in_KV = false
-client_id                  = "TBD-ClientId"
-client_secret              = "TBD-ClientSecret"
+client_id                  = ""
+client_secret              = ""
 data_disk_details = {
   12 = {
     disk_size_gb      = 100
