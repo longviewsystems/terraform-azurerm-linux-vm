@@ -13,28 +13,60 @@ on:
     defaults:
       run:
         shell: bash # use bash shell regardless of the type of Github Actions runner
-
+permissions: read-all
 jobs:
   checkov-tests:
     name: 'Run Checkov | Static Code Analysis'
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
       - uses: bridgecrewio/checkov-action@master
         with:
           directory: .
           soft_fail: true
-          skip_check: CKV_AZURE_35,CKV_AZURE_44,CKV_AZURE_33,CKV_AZURE_43,CKV2_AZURE_1,CKV2_AZURE_21,CKV2_AZURE_8,CKV2_AZURE_18,CKV_AZURE_50,CKV_AZURE_1
+          skip_check: CKV_AZURE_35,CKV_AZURE_44,CKV_AZURE_33,CKV_AZURE_43,CKV2_AZURE_1,CKV2_AZURE_21,CKV2_AZURE_8,CKV2_AZURE_18,CKV_AZURE_50,CKV_AZURE_110,CKV_AZURE_42,CKV_AZURE_1
+  tflint:
+    runs-on: ${{ matrix.os }}
 
+    strategy:
+      matrix:
+        os: [ubuntu-latest]
+
+    steps:
+    - uses: actions/checkout@v3
+      name: Checkout source code
+      
+    - uses: actions/cache@v3
+      name: Cache plugin dir
+      with:
+        path: ~/.tflint.d/plugins
+        key: ${{ matrix.os }}-tflint-${{ hashFiles('.tflint.hcl') }}
+
+    - uses: terraform-linters/setup-tflint@v2
+      name: Setup TFLint
+      with:
+        tflint_version: v0.34.1
+
+    - name: Show version
+      run: tflint --version
+
+    - name: Init TFLint
+      run: tflint --init
+
+    - name: Init Terraform
+      run: terraform init
+
+    - name: Run TFLint
+      run: tflint -f compact
   go-tests:
     name: 'Run Terratest | Unit Testing'
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2 # checkout the repo to the Github Actions runner
-      - uses: actions/setup-go@v1 # setup the go environment
+      - uses: actions/checkout@v3 # checkout the repo to the Github Actions runner
+      - uses: actions/setup-go@v3 # setup the go environment
         with:
           go-version: 1.17
-      - uses: hashicorp/setup-terraform@v1 # setup the terraform environment 
+      - uses: hashicorp/setup-terraform@v2 # setup the terraform environment
         with:
           terraform_version: 1.0.11
           terraform_wrapper: false
@@ -43,33 +75,18 @@ jobs:
         run: go mod download
       - name: 'Run Terratest'
         working-directory: test
-        run: |
-          export TF_VAR_tenant_id=$ARM_TENANT_ID
-          export TF_VAR_SubsId=$ARM_SUBSCRIPTION_ID
-          export TF_VAR_client_id=$ARM_CLIENT_ID
-          export TF_VAR_client_secret=$ARM_CLIENT_SECRET
-          sed -i "s/TBD-TenantId/$TF_VAR_tenant_id/g" ../examples/linux-vm.tfvars
-          sed -i "s/TBD-SubscriptionId/$TF_VAR_SubsId/g" ../examples/linux-vm.tfvars
-          sed -i "s/TBD-ClientId/$TF_VAR_client_id/g" ../examples/linux-vm.tfvars
-          sed -i "s/TBD-ClientSecret/$TF_VAR_client_secret/g" ../examples/linux-vm.tfvars
-          make test-linuxvm
-          sed -i "s/$TF_VAR_tenant_id/TBD-TenantId/g" ../examples/linux-vm.tfvars
-          sed -i "s/$TF_VAR_SubsId/TBD-SubscriptionId/g" ../examples/linux-vm.tfvars
-          sed -i "s/$TF_VAR_client_id/TBD-ClientId/g" ../examples/linux-vm.tfvars
-          sed -i "s/$TF_VAR_client_secret/TBD-ClientSecret/g" ../examples/linux-vm.tfvars
+        run: make azdo-agent-test
         env:
-          ARM_SUBSCRIPTION_ID: ${{ secrets.ARM_SUBSCRIPTION_ID }}
-          ARM_CLIENT_ID: ${{ secrets.ARM_CLIENT_ID }}
-          ARM_CLIENT_SECRET: ${{ secrets.ARM_CLIENT_SECRET }}
-          ARM_TENANT_ID: ${{ secrets.ARM_TENANT_ID }}
-       
-        
+          ARM_SUBSCRIPTION_ID: ${{ secrets.SUB_ID_SUB_LVS_CMP_DEV }}
+          ARM_CLIENT_ID: ${{ secrets.CLIENT_ID_SP_CLOUDMANAGEMENTPLATFORM_PIPELINE_SERVICECONNECTION_DEV }}
+          ARM_CLIENT_SECRET: ${{ secrets.CLIENT_SECRET_SP_CLOUDMANAGEMENTPLATFORM_PIPELINE_SERVICECONNECTION_DEV }}
+          ARM_TENANT_ID: ${{ secrets.TENANT_ID_LVS }}
 
   convert_via_pandoc:
     name: 'Convert markdown to PDF using Pandoc'
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
 
       - name: 'Create file list'
         id: files_list
@@ -90,12 +107,12 @@ jobs:
     name: 'Automated Tagging and Versioning using semantic-release'
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
         with:
           persist-credentials: false
-      - uses: actions/setup-node@v1 #Install Node 15 apt repo
+      - uses: actions/setup-node@v3 #Install Node 15 apt repo
         with:
-          node-version: 18.x
+          node-version: 18
       - name: Install node modules
         run: |
           npm install npx semantic-release
@@ -103,5 +120,5 @@ jobs:
       - name: 'Run semantic-release'
         run: npx semantic-release
         env:
-          GH_TOKEN: ${{ secrets.GH_TOKEN_SEMANTIC_RELEASE }}
+          GH_TOKEN: ${{ secrets.GH_TOKEN_SEMANTIC_RELEASE }} #custom PAT with repo scope needed to operate on protected branches
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}           
