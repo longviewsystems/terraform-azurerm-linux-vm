@@ -5,10 +5,10 @@ SHELL := /bin/bash
 azdo-agent:
 	echo "Calling azdo-agent"
 	terraform init
-	terraform plan
-	terraform apply -auto-approve
+	terraform plan -var-file="examples/linux-vm.tfvars" 
+	terraform apply -var-file="examples/linux-vm.tfvars" -auto-approve
 destroy:
-	terraform destroy -auto-approve
+	terraform destroy -var-file="examples/linux-vm.tfvars"  -auto-approve
 clean:
 	@find . -name terraform.tfstate -type f -exec rm -rf {} +
 	@find . -name terraform.tfstate.backup -type f -exec rm -rf {} +

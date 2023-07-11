@@ -12,6 +12,10 @@ SRId                       = "11551"
 store_admin_password_in_KV = false
 client_id                  = ""
 client_secret              = ""
+tenant_id                  = ""
+subscription_id            = ""
+resource_group_name        = ""
+
 data_disk_details = {
   12 = {
     disk_size_gb      = 100
