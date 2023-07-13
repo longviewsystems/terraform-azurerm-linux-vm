@@ -13,7 +13,7 @@ data "azurerm_client_config" "current" {}
 
 # Create a resource group if it doesn’t exist
 data "azurerm_resource_group" "resourcegroup" {
-  name = var.resource_group_name
+  name = "var.resource_group_name"
 }
 
 data "azurerm_subnet" "net" {

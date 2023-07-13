@@ -236,15 +236,3 @@ variable "tags" {
   description = "A mapping of tags to assign to the Virtual Machine."
   default     = {}
 }
-
-variable "client_id" {
-  type        = string
-  description = "The client id for the Service Principal used to build the VM."
-  default     = ""
-}
-
-variable "client_secret" {
-  type        = string
-  description = "The client secret for the Service Principal used to build the VM."
-  default     = ""
-}

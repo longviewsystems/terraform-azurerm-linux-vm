@@ -1,5 +1,4 @@
-
-subnet_id                  = ""
+subnet_id                  = "/subscriptions/TBD-SubscriptionId/resourceGroups/RG-TF-Test-WinVMModule/providers/Microsoft.Network/virtualNetworks/vnet-Tf-Test-WInVMModule/subnets/default"
 admin_password             = ""
 backup_vault_enabled       = false
 use_dynamic_plan           = false
@@ -9,13 +8,10 @@ image_URN                  = "OpenLogic:CentOS:7.5:latest"
 Encrpyt_all_VM_Disks       = false
 vm_size                    = "Standard_D8s_v4"
 SRId                       = "11551"
+resource_group_name        = "RG-TF-Test-WinVMModule"
+tenant_id                  = "TBD-TenantId"
+subscription_id            = "TBD-SubscriptionId"
 store_admin_password_in_KV = false
-client_id                  = ""
-client_secret              = ""
-tenant_id                  = ""
-subscription_id            = ""
-resource_group_name        = ""
-
 data_disk_details = {
   12 = {
     disk_size_gb      = 100
