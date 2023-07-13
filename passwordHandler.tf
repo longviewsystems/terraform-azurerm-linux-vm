@@ -25,5 +25,4 @@ resource "azurerm_key_vault_secret" "password" {
   value           = local.passwordToUse #random_password.password.result
   key_vault_id    = data.azurerm_key_vault.PWKeyVault[0].id
   content_type    = "randomized VM password"
-  # expiration_date = "2021-12-31T23:59:59Z"   #Optional
 }
