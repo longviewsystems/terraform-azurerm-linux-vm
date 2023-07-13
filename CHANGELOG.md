@@ -1,3 +1,12 @@
+# [1.1.0](https://github.com/longviewsystems/terraform-azurerm-linux-vm/compare/1.0.1...1.1.0) (2023-07-13)
+
+
+### Features
+
+* updates to vm module ([8e40905](https://github.com/longviewsystems/terraform-azurerm-linux-vm/commit/8e40905e4e224442304304e8b46ff1feb12754fb))
+* updates to vm module ([8635438](https://github.com/longviewsystems/terraform-azurerm-linux-vm/commit/86354385c9325c214a80998360ddc6ed40aabc28))
+* updates to vm module ([a543d0e](https://github.com/longviewsystems/terraform-azurerm-linux-vm/commit/a543d0eedb7f28a27b3563b3fa879d06cbb69981))
+
 ## [1.0.1](https://github.com/longviewsystems/terraform-azurerm-linux-vm/compare/1.0.0...1.0.1) (2021-12-15)
 
 
