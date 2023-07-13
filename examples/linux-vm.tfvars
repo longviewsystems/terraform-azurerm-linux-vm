@@ -1,4 +1,4 @@
-subnet_id                  = "/subscriptions/7f3c4fcf-626c-49e0-9160-a756147abaa4/resourceGroups/RG-TF-Test-WinVMModule/providers/Microsoft.Network/virtualNetworks/vnet-Tf-Test-WInVMModule/subnets/default"
+subnet_id                  = "/subscriptions/TBD-SubscriptionId/resourceGroups/RG-TF-Test-WinVMModule/providers/Microsoft.Network/virtualNetworks/vnet-Tf-Test-WInVMModule/subnets/default"
 admin_password             = ""
 backup_vault_enabled       = false
 use_dynamic_plan           = false
@@ -11,8 +11,8 @@ SRId                       = "11551"
 resource_group_name        = "RG-TF-Test-WinVMModule"
 virtual_network_name       = "vnet-Tf-Test-WInVMModule"
 subnet_name                = "default"
-tenant_id                  = ""
-subscription_id            = ""
+tenant_id                  = "TBD-TenantId"
+subscription_id            = "TBD-SubscriptionId"
 store_admin_password_in_KV = false
 data_disk_details = {
   12 = {
