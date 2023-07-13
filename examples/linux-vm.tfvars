@@ -1,4 +1,3 @@
-
 subnet_id                  = "/subscriptions/TBD-SubscriptionId/resourceGroups/RG-TF-Test-WinVMModule/providers/Microsoft.Network/virtualNetworks/vnet-Tf-Test-WInVMModule/subnets/default"
 admin_password             = ""
 backup_vault_enabled       = false

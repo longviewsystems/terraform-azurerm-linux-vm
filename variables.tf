@@ -151,7 +151,7 @@ variable "subnet_id" {
   description = "Subnet ID of the subnet to join the VM to."
   #sample: /subscriptions/57215661-2f9e-482f-9334-############/resourceGroups/RG-CORENETWORK-PROD-01/providers/Microsoft.Network/virtualNetworks/vnet-cor1-westus2-01/subnets/snet-Apps-cor1-westus2-01
 }
-
+  
 
 /*********************************************************
 *** Key Vault for VM Password
